@@ -17,14 +17,18 @@ let level = 1;
 let speed = 200;
 let border = false;
 let over = false;
+let black = false;
 
+let content = document.getElementById('content');
 let btnScore = document.getElementById('btnScore');
 let btnLevel = document.getElementById('btnLevel');
 let btnBorder = document.getElementById('btnBorder');
+let btnTheme = document.getElementById('btnTheme');
 
 let spanLevel = document.getElementById('spanLevel');
 let spanBorder = document.getElementById('spanBorder');
 let spanScore = document.getElementById('spanScore');
+let spanTheme = document.getElementById('spanTheme');
 
 let gameover = document.getElementById('gameover');
 
@@ -67,6 +71,18 @@ btnLevel.onclick = function () {
     }
 }
 
+btnTheme.onclick = function () {
+    if (!black) {
+        black = true;
+        content.classList.add('black');
+        spanTheme.innerHTML = 'Black';
+    } else {
+        black = false;
+        content.classList.remove('black');
+        spanTheme.innerHTML = 'White';
+    }
+}
+
 function createBG() {
     context.fillStyle = 'lightgreen';
     context.fillRect(0, 0, 16 * box, 16 * box);
@@ -98,7 +114,6 @@ function update(event) {
         if (event.keyCode == 40 && direction != "up") direction = "down";
     }
 }
-
 
 function startGame() {
 
